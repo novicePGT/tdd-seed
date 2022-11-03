@@ -43,7 +43,7 @@ public class CalculatorController {
         }
         String[] value = str.split(" "); // 1 + 2면 value[0]에 1 value[1] + ...
         int result = Integer.parseInt(value[0]);
-        for (int i=0; i < value.length -2; i=i+2) {
+        for (int i=0; i < value.length-2; i=i+2) {
             result = this.arithmetic(result,
                     value[i+1].charAt(0), Integer.parseInt(value[i+2]));
         } return result;

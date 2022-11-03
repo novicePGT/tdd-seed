@@ -15,11 +15,8 @@ public class CalculatorService {
     public void run() throws IllegalArgumentException {
         String inputArithmeticData = "";
         boolean flag = true;
-        System.out.println("===============문자열 계산기===============");
-        System.out.println();
 
         do {
-            System.out.println("문자열 연산을 하기위한 값을 / x + y / 형식으로 입력해주세요. * 종료 = 0 * ");
             System.out.print("입력 : ");
             inputArithmeticData = scanner.nextLine();
 

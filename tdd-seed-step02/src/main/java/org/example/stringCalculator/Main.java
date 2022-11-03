@@ -5,8 +5,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        CalculatorService calculatorService = new CalculatorService(scanner);
-        calculatorService.run();
+//        Scanner scanner = new Scanner(System.in);
+//        CalculatorService calculatorService = new CalculatorService(scanner);
+//        calculatorService.run();
+
+        CalculatorView calculatorView = new CalculatorView();
+        calculatorView.viewOfRun();
     }
 }
