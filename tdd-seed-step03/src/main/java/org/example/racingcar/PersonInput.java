@@ -31,7 +31,8 @@ public class PersonInput {
         int movement = random.nextInt(10);
 
         if (movement >= 4) {
-            System.out.println("- ");
+            System.out.print("- ");
         }
+        System.out.print(" ");
     }
 }
