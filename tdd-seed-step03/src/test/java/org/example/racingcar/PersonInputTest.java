@@ -6,21 +6,21 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.example.racingcar.CarPaint.*;
 
 @DisplayName("테스트를 진행하기 위해")
 class PersonInputTest {
 
     private PersonInput personInput;
-    private CarPaint carPaint;
+    private Random random;
 
     @BeforeEach
     void setup() {
         personInput = new PersonInput();
+        random = new Random();
     }
 
     @DisplayName("자동차의 개수를 입력받는다")
@@ -45,6 +45,17 @@ class PersonInputTest {
 
         /* then */
         assertThat(carColor).isEqualTo(carColor);
+    }
+
+    @DisplayName("랜덤 숫자 테스트")
+    @Test
+    void isCarMoving_Test() {
+        /* given */
+        int movement = random.nextInt(10);
+
+        /* when, then */
+        assertThat(movement).isEqualTo("3");
+
     }
 }
 // 실패
