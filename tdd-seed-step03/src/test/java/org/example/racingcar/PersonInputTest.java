@@ -4,7 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,10 +16,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class PersonInputTest {
 
     private PersonInput personInput;
+    private CarPaint carPaint;
 
     @BeforeEach
     void setup() {
-        personInput = new PersonInput(new Scanner(System.in));
+        personInput = new PersonInput();
     }
 
     @DisplayName("자동차의 개수를 입력받는다")
@@ -28,6 +32,19 @@ class PersonInputTest {
         /* when, then */
         assertThat(inputData).isEqualTo(3);
 
+    }
+
+    @DisplayName("자동차의 이름을 색으로 정하기 위해 enum을 사용함")
+    @Test
+    void carColorName_Test() {
+        /* given */
+        CarPaint[] colorArray = CarPaint.values();
+
+        /* when */
+        List<CarPaint> carColor = Arrays.stream(colorArray).collect(Collectors.toList());
+
+        /* then */
+        assertThat(colorArray).isEqualTo("1");
     }
 }
 // 실패
