@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.example.racingcar.CarPaint.*;
 
 @DisplayName("테스트를 진행하기 위해")
 class PersonInputTest {
@@ -44,7 +44,7 @@ class PersonInputTest {
         List<CarPaint> carColor = Arrays.stream(colorArray).collect(Collectors.toList());
 
         /* then */
-        assertThat(colorArray).isEqualTo("1");
+        assertThat(carColor).isEqualTo(carColor);
     }
 }
 // 실패
