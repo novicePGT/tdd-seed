@@ -4,22 +4,23 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.example.racingcar.CarPaint.GREEN;
 
 @DisplayName("테스트를 진행하기 위해")
 class PersonInputTest {
 
-    private PersonInput personInput;
     private Random random;
 
     @BeforeEach
     void setup() {
-        personInput = new PersonInput();
         random = new Random();
     }
 
@@ -38,13 +39,14 @@ class PersonInputTest {
     @Test
     void carColorName_Test() {
         /* given */
-        CarPaint[] colorArray = CarPaint.values();
+        int index = 3;
 
         /* when */
-        List<CarPaint> carColor = Arrays.stream(colorArray).collect(Collectors.toList());
+        CarPaint[] colorArray = CarPaint.values();
+        CarPaint carColor1 = colorArray[index];
 
         /* then */
-        assertThat(carColor).isEqualTo(carColor);
+        assertThat(carColor1).isEqualTo(GREEN);
     }
 
     @DisplayName("랜덤 숫자 테스트")
@@ -56,6 +58,22 @@ class PersonInputTest {
         /* when, then */
         assertThat(movement).isEqualTo("3");
 
+    }
+
+    @DisplayName("arrayList 배열 테스트")
+    @Test
+    void addArrayList_Test() {
+        /* given */
+        int data = 6;
+        ArrayList<String> carMovingCount = new ArrayList<String>();
+
+        /* when */
+        if (data >= 4) {
+            carMovingCount.add("-");
+        }
+
+        /* then */
+        assertThat(carMovingCount).isEqualTo("-");
     }
 }
 // 실패
