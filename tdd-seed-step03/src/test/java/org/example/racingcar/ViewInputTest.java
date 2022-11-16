@@ -5,17 +5,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.example.racingcar.CarPaint.GREEN;
 
 @DisplayName("테스트를 진행하기 위해")
-class PersonInputTest {
+class ViewInputTest {
 
     private Random random;
 
@@ -42,11 +37,11 @@ class PersonInputTest {
         int index = 3;
 
         /* when */
-        CarPaint[] colorArray = CarPaint.values();
-        CarPaint carColor1 = colorArray[index];
+        CarNameType[] colorArray = CarNameType.values();
+        CarNameType carColor1 = colorArray[index];
 
         /* then */
-        assertThat(carColor1).isEqualTo(GREEN);
+        assertThat(carColor1).isEqualTo("");
     }
 
     @DisplayName("랜덤 숫자 테스트")
