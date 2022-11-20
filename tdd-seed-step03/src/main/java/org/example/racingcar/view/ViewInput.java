@@ -1,33 +1,21 @@
-package org.example.racingcar;
+package org.example.racingcar.view;
 
 import java.util.Scanner;
 
 import static java.lang.System.*;
 
 public class ViewInput {
-    private Scanner scanner;
+    private static Scanner scanner = new Scanner(in);
 
-    public ViewInput() {
-        this.scanner = new Scanner(in);
+    /* 얘는 Viewinput의 역할 */
+    public static int getCarCountBySystem() {
+        System.out.print("자동차 대수는 몇 대 인가요? ");
+        return scanner.nextInt();
     }
 
     /* 얘는 Viewinput의 역할 */
-    public int carCount() throws Exception {
-        int numberOfCars = scanner.nextInt();
-
-        if (numberOfCars >= 10) {
-            throw new Exception("자동차의 최대 개수를 벗어났습니다.");
-        }
-        return numberOfCars;
-    }
-
-    /* 얘는 Viewinput의 역할 */
-    public int carMovingCount() {
-        int carMovingCount = scanner.nextInt();
-
-        if (carMovingCount >= 20) {
-            throw new RuntimeException("최대 움직임 횟수를 초과했습니다");
-        }
-        return carMovingCount;
+    public static int carMovingCount() {
+        System.out.print("시도할 회수는 몇 회 인가요? ");
+        return scanner.nextInt();
     }
 }
