@@ -8,6 +8,8 @@ import static java.lang.System.out;
 
 public class Car {
 
+    int MIN_MOVING_ROUNDING = 0;
+
     private Random random;
 
     public Car() {
@@ -15,7 +17,7 @@ public class Car {
     }
 
     public void isCarMoving(int carMovingCount) {
-        int movingRounding = 0;
+        int movingRounding = MIN_MOVING_ROUNDING;
         ArrayList<String> valueList = new ArrayList<>();
         while (movingRounding < carMovingCount){
             validateList(valueList);

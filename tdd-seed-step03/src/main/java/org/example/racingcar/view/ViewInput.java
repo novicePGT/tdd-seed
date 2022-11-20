@@ -1,17 +1,14 @@
 package org.example.racingcar;
 
-import java.util.Random;
 import java.util.Scanner;
 
 import static java.lang.System.*;
 
 public class ViewInput {
     private Scanner scanner;
-    private Random random;
 
     public ViewInput() {
         this.scanner = new Scanner(in);
-        this.random = new Random();
     }
 
     /* 얘는 Viewinput의 역할 */
