@@ -1,35 +1,43 @@
-package org.example.racingcar;
+package org.example.racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.stream.Stream;
+import org.example.racingcar.strategy.CarMoveStrategy;
 
-import static java.lang.System.out;
+import java.util.Objects;
 
 public class Car {
 
-    int MIN_MOVING_ROUNDING = 0;
+    private Position position;
+    private int GENERATE_MIN_POSITION = 0;
 
-    private Random random;
-
-    public Car() {
-        this.random = new Random();
+    /* 포지션의 위치를 부생성자 오버로딩을 통해 가져옴 */
+    public Car(int position) {
+        this(new Position(position));
     }
 
-    public void isCarMoving(int carMovingCount) {
-        int movingRounding = MIN_MOVING_ROUNDING;
-        ArrayList<String> valueList = new ArrayList<>();
-        while (movingRounding < carMovingCount){
-            validateList(valueList);
-            movingRounding++;
-        }
-        Stream<String> valueStream = valueList.stream();
-        valueStream.forEach(out::print);
+    /* 주생성자 */
+    public Car(Position position) {
+        validatePosition(position);
+        this.position = position;
     }
 
-    private void validateList(ArrayList<String> valueList) {
-        if (random.nextInt(10) >= 4) {
-            valueList.add("-");
+    private void validatePosition(Position position) {
+        if (Objects.isNull(position)) {
+            throw new RuntimeException("[NULL POSITION EXCEPTION]");
         }
+        if (position.getPosition() <= GENERATE_MIN_POSITION) {
+            throw new RuntimeException("[NEGATIVE POSITION EXCEPTION]");
+        }
+    }
+
+    /* 랜덤한 이벤트를 단위 테스트하기 위해 디자인 전략 패턴을 활용 */
+    public Car move(CarMoveStrategy carMoveStrategy) {
+        if (carMoveStrategy.testCarMove()) {
+            return new Car(position.increase());
+        }
+        return this;
+    }
+
+    public int getPosition() {
+        return position.getPosition();
     }
 }
