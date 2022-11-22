@@ -1,25 +1,18 @@
 package org.example.racingcar.view;
-
-import org.example.racingcar.domain.Car;
 import org.example.racingcar.domain.Cars;
+import org.example.racingcar.domain.Round;
 import org.example.racingcar.strategy.RandomCarMoveStrategy;
 
-import java.util.stream.IntStream;
+import static java.lang.System.out;
 
 public class ViewOutput {
 
-    public static void printResult(Cars cars, int round) {
-        // 라운드 만큼 cars move
-        Car car = new Car(0);
-
-        IntStream.range(0, cars.getCars().size())
-                .forEach( printCarMove -> {
-                    int roundCount = 0;
-                    while (round >= roundCount) {
-                        cars.move(new RandomCarMoveStrategy());
-                        roundCount++;
-                    }
-                    System.out.println("-".repeat(car.getPosition()));
-                });
+    public static void printResult(Cars cars, Round round) {
+        for (int i = 0; i < round.getRound(); i++) {
+            cars = cars.move(new RandomCarMoveStrategy());
+        }
+        cars.getCars()
+                .stream()
+                .forEach( car -> out.println("-".repeat(car.getPosition())));
     }
 }

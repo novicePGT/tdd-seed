@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Random;
 import java.util.stream.IntStream;
 
+import static java.lang.System.out;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -62,14 +63,14 @@ class CarTest {
         그것을 차의 개수만큼 반복시키는 IntStream()으로 다시 반복하면 차의 개수만큼 각자 포지션 값 만큼 "-"를 찍을 수 있을 것임. 라는 의견
         */
         Cars cars = new Cars(5);
-        Car car = new Car(1);
-        Position position = new Position(car.getPosition());
+        Round round = new Round(3);
 
-        IntStream.range(0, cars.getCars().size())
-                .forEach( carCount -> {
-                    IntStream.range(0, 3)
-                            .forEach( round -> car.move(new RandomCarMoveStrategy()));
-                    cars.getCarsPosition();
-                });
+        for (int i = 0; i < round.getRound(); i++) {
+            cars = cars.move(new RandomCarMoveStrategy());
+        }
+
+        cars.getCars()
+                .stream()
+                .forEach( car -> out.println("-".repeat(car.getPosition())));
     }
 }

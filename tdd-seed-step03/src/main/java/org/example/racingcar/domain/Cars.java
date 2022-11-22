@@ -1,6 +1,8 @@
 package org.example.racingcar.domain;
 
 import org.example.racingcar.strategy.CarMoveStrategy;
+import org.example.racingcar.strategy.RandomCarMoveStrategy;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,9 +26,10 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public void move(CarMoveStrategy carMoveStrategy) {
-        cars.stream()
-                .forEach(car -> car.move(carMoveStrategy));
+    public Cars move(CarMoveStrategy carMoveStrategy) {
+        return new Cars(cars.stream()
+                .map( car -> car.move(carMoveStrategy))
+                .collect(Collectors.toList()));
     }
 
     public List<Car> getCars() {
