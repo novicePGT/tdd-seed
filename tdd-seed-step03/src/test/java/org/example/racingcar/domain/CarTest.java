@@ -5,6 +5,7 @@ import org.example.racingcar.strategy.RandomCarMoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -21,16 +22,24 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("랜덤 숫자 테스트")
+    void 랜덤_숫자_테스트() {
+        int data = 0;
+        if (new Random().nextInt(10) >= 4) {
+            data = 1;
+        }
+        assertThat(data).isEqualTo(1);
+    }
+
+    @Test
     @DisplayName("랜덤 전략 반환 테스트")
     void 랜덤_전략_반환_테스트() {
         RandomCarMoveStrategy randomCarMoveStrategy = new RandomCarMoveStrategy();
-        int resultData;
+        int resultData = 0;
 
         if (randomCarMoveStrategy.testCarMove()) {
             resultData = 1;
         }
-        resultData = 0;
-
         assertThat(resultData).isEqualTo(0);
     }
 
@@ -41,7 +50,7 @@ class CarTest {
 
         int isMovingCar = car.move(new RandomCarMoveStrategy()).getPosition();
 
-        assertThat(isMovingCar).isEqualTo(4);
+        assertThat(isMovingCar).isEqualTo(5);
     }
 
     @Test
