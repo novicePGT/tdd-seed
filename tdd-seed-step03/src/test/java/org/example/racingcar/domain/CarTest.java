@@ -20,6 +20,19 @@ class CarTest {
         assertThat(position.getPosition()).isEqualTo(0);
     }
 
+    @Test
+    @DisplayName("랜덤 전략 반환 테스트")
+    void 랜덤_전략_반환_테스트() {
+        RandomCarMoveStrategy randomCarMoveStrategy = new RandomCarMoveStrategy();
+        int resultData;
+
+        if (randomCarMoveStrategy.testCarMove()) {
+            resultData = 1;
+        }
+        resultData = 0;
+
+        assertThat(resultData).isEqualTo(0);
+    }
 
     @Test
     @DisplayName("자동차 포지션 움직임 테스트")
@@ -36,9 +49,11 @@ class CarTest {
     void 움직인_횟수_테스트() {
         Cars cars = new Cars(5);
 
-        Car car = new Car(0);
+        Position position = new Position(4);
 
-        IntStream.range(0, 3)
+        Car car = new Car(position);
+
+        IntStream.range(0, cars.getCars().size())
                         .forEach(i -> cars.move(new RandomCarMoveStrategy()));
 
         assertThat(car.getPosition()).isEqualTo(3);
