@@ -14,7 +14,7 @@ public class ViewInput {
     }
 
     /* 얘는 Viewinput의 역할 */
-    public static int carMovingCount() {
+    public static int getCarMovingCountBySystem() {
         System.out.print("시도할 회수는 몇 회 인가요? ");
         return scanner.nextInt();
     }

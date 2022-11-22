@@ -2,6 +2,7 @@ package org.example.racingcar.domain;
 
 import org.example.racingcar.strategy.CarMoveStrategy;
 import org.example.racingcar.strategy.RandomCarMoveStrategy;
+import org.example.racingcar.view.ViewInput;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -50,21 +51,25 @@ class CarTest {
 
         int isMovingCar = car.move(new RandomCarMoveStrategy()).getPosition();
 
-        assertThat(isMovingCar).isEqualTo(5);
+        assertThat(isMovingCar).isEqualTo(4);
     }
 
     @Test
     @DisplayName("자동차가 총 움직인 횟수 테스트")
     void 움직인_횟수_테스트() {
+        /*
+        라운드 만큼 cars.move(new RandomCarMoveStrategy) 하면 car에서 트루면 포지션 값을 증가시킬 것임.
+        그것을 차의 개수만큼 반복시키는 IntStream()으로 다시 반복하면 차의 개수만큼 각자 포지션 값 만큼 "-"를 찍을 수 있을 것임. 라는 의견
+        */
         Cars cars = new Cars(5);
-
-        Position position = new Position(4);
-
-        Car car = new Car(position);
+        Car car = new Car(1);
+        Position position = new Position(car.getPosition());
 
         IntStream.range(0, cars.getCars().size())
-                        .forEach(i -> cars.move(new RandomCarMoveStrategy()));
-
-        assertThat(car.getPosition()).isEqualTo(3);
+                .forEach( carCount -> {
+                    IntStream.range(0, 3)
+                            .forEach( round -> car.move(new RandomCarMoveStrategy()));
+                    cars.getCarsPosition();
+                });
     }
 }

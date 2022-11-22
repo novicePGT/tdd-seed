@@ -1,6 +1,7 @@
 package org.example.racingcar.domain;
 
 import org.example.racingcar.strategy.CarMoveStrategy;
+import org.example.racingcar.strategy.RandomCarMoveStrategy;
 
 import java.util.Objects;
 
@@ -24,7 +25,7 @@ public class Car {
         if (Objects.isNull(position)) {
             throw new RuntimeException("[NULL POSITION EXCEPTION]");
         }
-        if (position.getPosition() <= GENERATE_MIN_POSITION) {
+        if (position.getPosition() < GENERATE_MIN_POSITION) {
             throw new RuntimeException("[NEGATIVE POSITION EXCEPTION]");
         }
     }

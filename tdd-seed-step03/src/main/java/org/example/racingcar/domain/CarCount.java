@@ -15,4 +15,8 @@ public class CarCount {
             throw new RuntimeException("[MIN_COUNT EXCEPTION]");
         }
     }
+
+    public int getCount() {
+        return count;
+    }
 }

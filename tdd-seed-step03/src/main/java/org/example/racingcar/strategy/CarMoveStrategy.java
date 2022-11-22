@@ -1,2 +1,6 @@
-package org.example.racingcar.strategy;public interface CarMoveStrategy {
+package org.example.racingcar.strategy;
+
+@FunctionalInterface
+public interface CarMoveStrategy {
+    boolean testCarMove();
 }

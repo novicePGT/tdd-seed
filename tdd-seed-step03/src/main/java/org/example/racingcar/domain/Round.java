@@ -3,7 +3,7 @@ package org.example.racingcar.domain;
 public class Round {
     private static final int GENERATE_MIN_ROUND = 0;
 
-    private final int round;
+    private int round;
 
     public Round(final int round) {
         validateRound(round);
@@ -14,5 +14,9 @@ public class Round {
         if(count <= GENERATE_MIN_ROUND) {
             throw new RuntimeException("[MIN_ROUND EXCEPTION]");
         }
+    }
+
+    public int getRound() {
+        return round;
     }
 }
