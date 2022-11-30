@@ -10,8 +10,10 @@ public class RacingCarGame {
 
         Round round = new Round(ViewInput.getCarMovingCountBySystem());
 
+        CarName carName = new CarName(ViewInput.getCarNameBySystem(), carCount.getCount());
+
         Cars cars = new Cars(carCount.getCount());
 
-        ViewOutput.printResult(cars, round);
+        ViewOutput.printResult(cars, round, carName);
     }
 }
