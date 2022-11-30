@@ -16,9 +16,9 @@ class CarNameTest {
         String names = "car1, car2, car3";
 
         //when
-        String[] name = names.split(",");
+        String[] splitName = names.trim().split(",");
 
         //then
-        assertThat(name).contains("car1","car2", "car3");
+        assertThat(splitName).contains("car1","car2", "car3");
     }
 }
