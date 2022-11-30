@@ -3,6 +3,9 @@ package org.example.racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +19,9 @@ class CarNameTest {
         String names = "car1, car2, car3";
 
         //when
-        String[] splitName = names.trim().split(",");
+        String[] splitName = Arrays.stream(names.split(","))
+                        .map(String::trim)
+                        .toArray(String[]::new);
 
         //then
         assertThat(splitName).contains("car1","car2", "car3");
