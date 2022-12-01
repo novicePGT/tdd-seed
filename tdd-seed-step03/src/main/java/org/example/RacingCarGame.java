@@ -15,5 +15,6 @@ public class RacingCarGame {
         Cars cars = new Cars(carCount.getCount());
 
         ViewOutput.printResult(cars, round, carName);
+
     }
 }

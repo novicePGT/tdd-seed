@@ -1,8 +1,5 @@
 package org.example.racingcar.view;
-import org.example.racingcar.domain.Car;
-import org.example.racingcar.domain.CarName;
-import org.example.racingcar.domain.Cars;
-import org.example.racingcar.domain.Round;
+import org.example.racingcar.domain.*;
 import org.example.racingcar.strategy.RandomCarMoveStrategy;
 
 import static java.lang.System.out;
@@ -22,11 +19,13 @@ public class ViewOutput {
                 .forEach(car -> {
                     printCycle(carNames, car);
                 });
+        out.println(WinnerCar.getWinnerCar().getKey());
     }
 
     private static void printCycle(String[] carNames, Car car) {
         out.print(carNames[CYCLE_VALUE] + ": ");
         out.println("-".repeat(car.getPosition()));
+        WinnerCar.runnerCar(carNames[CYCLE_VALUE], car.getPosition());
         CYCLE_VALUE++;
     }
 }
